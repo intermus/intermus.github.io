@@ -1,0 +1,806 @@
+/* ============================================
+   IMI - Interactive Musical Instruments
+   Main Stylesheet
+   ============================================ */
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+}
+
+html {
+    scroll-padding-top: 0px;
+    scroll-behavior: smooth;
+}
+
+/* Pull sections up higher - negative margin scrolls them closer to top */
+section {
+    scroll-margin-top: -30px;
+}
+
+.highlight {
+    color: #4A90E2;
+    font-weight: 600;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4A90E2;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #1a1a1a;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    margin-top: 70px;
+    padding: 5rem 2rem 7rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                url('../assets/hero_background.jpg') center/cover no-repeat;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -3px;
+    line-height: 1.05;
+}
+
+.hero-quote {
+    font-size: 3rem;
+    font-style: italic;
+    color: #4A90E2;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   VIDEO CONTAINER
+   ============================================ */
+
+.video-container {
+    max-width: 1000px;
+    margin: 4rem auto 2rem;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.video-placeholder {
+    position: relative;
+    background: transparent;
+    padding-bottom: 56.25%;
+}
+
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: none;
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.play-button {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 1.75rem 4.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.5);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.play-button:hover {
+    background: #3A7BC8;
+    transform: scale(1.08);
+    box-shadow: 0 20px 50px rgba(74, 144, 226, 0.6);
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-left: 18px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 5px;
+}
+
+.video-caption {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* ============================================
+   PHILOSOPHY SECTION
+   ============================================ */
+
+.philosophy-section {
+    padding: 7rem 2rem 7rem;
+    background: #ffffff;
+}
+
+.philosophy-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.philosophy-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.philosophy-intro {
+    font-size: 1.3rem;
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.philosophy-card {
+    background: #f8f9fa;
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.philosophy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+    font-weight: 600;
+}
+
+.philosophy-card p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   PRODUCTS SECTION
+   ============================================ */
+
+.products-section {
+    padding: 7rem 2rem;
+    background: #f8f9fa;
+}
+
+.products-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.products-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+}
+
+.products-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: #e5e5e5;
+}
+
+.product-card h3 {
+    font-size: 1.6rem;
+    margin: 1.5rem 1.5rem 1rem;
+    font-weight: 600;
+}
+
+.product-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
+    line-height: 1.7;
+}
+
+/* ============================================
+   PLAYALONG SECTION
+   ============================================ */
+
+.playalong-section {
+    padding: 7rem 2rem;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+}
+
+.playalong-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.playalong-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.playalong-tagline {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.playalong-description {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.feature-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.feature-box p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ============================================
+   TECHNOLOGY / ADVANTAGES SECTION
+   ============================================ */
+
+.tech-section {
+    padding: 7rem 2rem;
+    background: #ffffff;
+}
+
+.tech-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tech-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.tech-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+/* ============================================
+   MARKET OPPORTUNITIES SECTION
+   ============================================ */
+
+.markets-section {
+    padding: 7rem 2rem;
+    background: #f8f9fa;
+}
+
+.markets-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.markets-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.markets-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+}
+
+.market-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.market-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #e5e5e5;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.market-card:hover {
+    border-color: #4A90E2;
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+}
+
+.market-card.active {
+    border-color: #4A90E2;
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.3);
+}
+
+.market-header {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-icon {
+    font-size: 2rem;
+}
+
+.market-title {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.market-title h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.market-title p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.expand-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.market-card.active .expand-icon {
+    transform: rotate(180deg);
+}
+
+.bio-card.active .expand-icon {
+    transform: rotate(180deg);
+}
+
+.bio-card.active .bio-content {
+    max-height: 3000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.market-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.market-card.active .market-content {
+    max-height: 2000px;
+}
+
+.market-body {
+    padding: 2rem;
+}
+
+.market-body h4 {
+    color: #4A90E2;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.market-body ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.market-body li {
+    margin-bottom: 0.5rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact-section {
+    padding: 7rem 2rem;
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    font-size: 1.05rem;
+}
+
+.contact-info a {
+    color: #4A90E2;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: #000;
+    color: #999;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.footer-timeline {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet sizing */
+@media (max-width: 1024px) and (min-width: 769px) {
+    html {
+        scroll-padding-top: 0px;
+    }
+
+    section {
+        scroll-margin-top: -25px;
+    }
+}
+
+/* Mobile sizing */
+@media (max-width: 768px) {
+    /* Adjust scroll padding for mobile - pull sections higher */
+    html {
+        scroll-padding-top: 0px;
+    }
+
+    section {
+        scroll-margin-top: 40px;
+    }
+
+    /* Navigation - Mobile Menu */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+    }
+
+    .nav-links li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2.5rem 1.5rem 3.5rem;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                    url('../assets/hero_background.jpg') center/cover no-repeat;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+    }
+
+    .hero-quote {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Video */
+    .video-container {
+        margin: 2rem auto 1rem;
+    }
+
+    .play-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
+    .play-icon {
+        border-left: 14px solid white;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
+
+    /* Sections - Reduce Padding */
+    .philosophy-section,
+    .products-section,
+    .playalong-section,
+    .tech-section,
+    .markets-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .philosophy-section h2,
+    .products-section h2,
+    .playalong-section h2,
+    .tech-section h2,
+    .markets-section h2 {
+        font-size: 2rem;
+    }
+
+    /* Force Single Column Grids */
+    .philosophy-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature-boxes {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .market-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* PlayAlong */
+    .playalong-tagline {
+        font-size: 1.4rem;
+    }
+
+    .playalong-description {
+        font-size: 1.1rem;
+    }
+
+    /* Contact */
+    .contact-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1.5rem;
+    }
+}
